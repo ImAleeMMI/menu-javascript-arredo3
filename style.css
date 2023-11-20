@@ -1,0 +1,43 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E74B3C;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 80%;
+    }
+  }
+#name-piatto {}
+
+#piatti {font-size: large;}
+
+#ordine {
+    padding: 20px;
+    font-size: large;
+}
+
+#prezzo-totale {
+    background: white;
+    border-radius: 3px;
+    padding: 10px;
+}

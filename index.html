@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Menu Ristorante</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body onload="generaSelectTipo(), showOrder()">
+    
+    <div class="row">
+        <h2>Ristorante Da Mario</h2>
+        <div class="column">
+            <label for="tipo-piatto">Seleziona tipo piatto: </label>
+            <select id="tipo-piatto" onchange="showPiatti(this.value)"></select>
+            <div id="name-piatto"></div>
+            <h2>Piatti</h2>
+            <div id="piatti"></div>
+        </div>
+
+        <div class="column">
+            <h2>Ordini</h2>
+            <div id="ordine"></div>
+            <div id="prezzo-totale">
+                Totale :
+                <span id="totale"></span>
+                €
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
