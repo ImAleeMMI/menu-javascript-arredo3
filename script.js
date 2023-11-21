@@ -31,12 +31,12 @@ function generaSelectTipo() {
 }
 
 function showPiatti(tipoPiatto) {
-  
+
   // filtro l'oggetto menu in base al piatto passato
   var piattiTipo = menu.filter(piatto => piatto.tipo == tipoPiatto);
   var piatti = document.querySelector("#piatti");
   piatti.innerHTML = "";
-  piattiTipo.forEach(function(piatto){
+  piattiTipo.forEach(function (piatto) {
     // creo un oggetto div contente il nome del piatto
     var divPiatto = document.createElement("div");
     divPiatto.textContent = piatto.nome;
@@ -44,15 +44,17 @@ function showPiatti(tipoPiatto) {
     piatti.appendChild(divPiatto);
 
     // aggancio l'eventListener al click su ogni elemento. al click invoco la funzione addPiatto a cui va passato il piatto da aggiungere all'ordine
-    divPiatto.addEventListener("click", function() {
+    divPiatto.addEventListener("click", function () {
       addPiatto(piatto);
     });
   })
 }
 
 var ordine = JSON.parse(localStorage.getItem('ordine')) ?? [];
+var prezzoTotale = localStorage.getItem('totale') ?? 0;
 
 function addPiatto(piatto) {
+
   alert("Aggiunto " + piatto.nome + " all'ordine");
   // aggiungo il piatto all'ordine
   ordine.push(piatto);
@@ -61,21 +63,60 @@ function addPiatto(piatto) {
 
   //Richiamo la funzione showOrder
   showOrder()
-  
-  // calcolo e stampo il l'importo totale dell'ordine
-  var prezzoTotale = ordine.reduce((acc, piatto) => acc + piatto.prezzo,0);
-  document.getElementById('totale').innerHTML = prezzoTotale;
-  console.log(prezzoTotale);
+
 }
 
-function showOrder(){
+function showOrder() {
+  
   // visualizzo in un contenitore tutti i piatti dell'ordine
   var contenitorePiatti = document.getElementById('ordine');
   contenitorePiatti.innerHTML = "";
-  ordine.forEach(function(piatto){
+  var contenitorePrezzi = document.getElementById('prezzo');
+  contenitorePrezzi.innerHTML = "";
+  ordine.forEach(function (piatto) {
     var divOrdine = document.createElement("div");
     divOrdine.textContent = piatto.nome;
-
+    divOrdine.classList.add('piatto-ordine')
     contenitorePiatti.appendChild(divOrdine);
+
+    
+
+    //Delete
+    var iconaCancella = document.createElement("span");
+    iconaCancella.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    iconaCancella.classList.add('delete')
+    iconaCancella.addEventListener("click", function () {
+      removePiatto(piatto);
+    });
+    divOrdine.appendChild(iconaCancella);
+    // Prezzo
+    var divOrdinePrezzo = document.createElement("span");
+    divOrdinePrezzo.textContent = piatto.prezzo;
+    divOrdinePrezzo.classList.add('prezzo');
+    divOrdine.appendChild(divOrdinePrezzo)
   })
+  //richiamo la funzione calcTotal
+  calcTotal()
+
 }
+
+function removePiatto(piatto) {
+  var indice = ordine.indexOf(piatto);
+  if (indice !== -1) {
+    ordine.splice(indice, 1);
+    localStorage.setItem('ordine', JSON.stringify(ordine));
+    showOrder();
+  }
+}
+
+
+// calcolo e stampo il l'importo totale dell'ordine
+function calcTotal() {
+  var prezzoTotale = ordine.reduce((acc, piatto) => acc + piatto.prezzo, 0);
+  localStorage.setItem('totale', prezzoTotale);
+  document.getElementById('totale').innerHTML = prezzoTotale;
+  console.log(prezzoTotale);
+
+
+}
+

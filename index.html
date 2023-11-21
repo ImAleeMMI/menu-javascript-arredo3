@@ -2,34 +2,68 @@
 <html>
 
 <head>
-    <title>Menu Ristorante</title>
+    <title>Menu Al Grion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 
 <body onload="generaSelectTipo(), showOrder()">
-    
+
+    <img src="1600w-WhX5xBXo6Mw.jpeg" alt="logo" class="img">
     <div class="row">
-        <h2>Ristorante Da Mario</h2>
+        
         <div class="column">
-            <label for="tipo-piatto">Seleziona tipo piatto: </label>
+            <div class="container1">
+                <label for="tipo-piatto">Seleziona tipo piatto: </label>
             <select id="tipo-piatto" onchange="showPiatti(this.value)"></select>
             <div id="name-piatto"></div>
             <h2>Piatti</h2>
             <div id="piatti"></div>
+            </div>
+            
         </div>
 
         <div class="column">
-            <h2>Ordini</h2>
-            <div id="ordine"></div>
-            <div id="prezzo-totale">
-                Totale :
-                <span id="totale"></span>
-                €
+            <div class="container2">
+                <div class="receipt_header">
+                    <span>Ristorante Al Grion</span>
+                    
+                    <h2>Via: Rio San Martino, 1234 <span>Tel: +0425 123 456</span></h2>
+                    <div class="date_time_con">
+                        <div class="date">20/11/2023</div>
+                        <div class="time">16:00</div>
+                    </div>
+                </div>
+
+                <div class="receipt_body">
+                    <div class="items">
+                        <table>
+                            <h3>Ordini</h3>
+                            <tbody>
+                                <div id="ordine"></div>
+                                <span id ="prezzo"></span>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Totale:</td>
+                                    <td>
+                                        <div id="prezzo-totale">
+                                            <span id="totale"></span>
+                                            €
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <h3>Grazie mille!</h3>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

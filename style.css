@@ -4,40 +4,173 @@
 }
 
 body {
-    background-color: #E74B3C;
+    background-color: #8D0300;
 }
 
 .column {
     float: left;
     width: 50%;
     padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
+    height: 300px;
+}
+
+.row:after {
     content: "";
     display: table;
     clear: both;
-  }
-  
-  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 80%;
-    }
-  }
-#name-piatto {}
-
-#piatti {font-size: large;}
-
-#ordine {
-    padding: 20px;
-    font-size: large;
 }
+
+.img {
+    width: 150px;
+    height: auto;
+    align-items: left;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+#piatti {
+    font-size: large;
+    border: 1px solid #fff;
+}
+
+.piatto-ordine{
+    padding: 10px;
+}
+
+.prezzo{
+    float: right;
+}
+
+.delete{
+    color: red !important;
+    float: right;
+    padding-left: 10px;
+}
+
 
 #prezzo-totale {
     background: white;
     border-radius: 3px;
     padding: 10px;
+}
+
+.container1 {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    padding: 50px;
+    margin: 50px auto 0;
+    box-shadow: 7px 7px 10px rgb(0 0 0 / 0.2);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container2 {
+    display: block;
+    width: 100%;
+    background: #fff;
+    max-width: 500px;
+    padding: 25px;
+    margin: 50px auto 0;
+    box-shadow: 7px 7px 10px rgb(0 0 0 / 0.2);
+    border-radius: 5px;
+}
+
+.receipt_header {
+    text-align: center;
+}
+
+
+.receipt_header h2 {
+    font-size: 14px;
+    color: #727070;
+    font-weight: 300;
+}
+
+.receipt_header h2 span {
+    display: block;
+}
+
+.receipt_body {
+    margin-top: 25px;
+}
+
+
+table {
+    width: 100%;
+}
+
+thead, tfoot {
+    position: relative;
+}
+
+thead th:not(:last-child) {
+    text-align: left;
+}
+
+thead th:last-child {
+    text-align: right;
+}
+
+thead::after {
+    content: '';
+    width: 100%;
+    border-bottom: 1px dashed #000;
+    display: block;
+    position: absolute;
+}
+
+tbody td:not(:last-child), tfoot td:not(:last-child) {
+    text-align: left;
+}
+
+tbody td:last-child, tfoot td:last-child{
+    text-align: right;
+}
+
+tbody tr:first-child td {
+    padding-top: 15px;
+}
+
+tbody tr:last-child td {
+    padding-bottom: 15px;
+}
+
+tfoot tr:first-child td {
+    padding-top: 15px;
+}
+
+tfoot::before {
+    content: '';
+    width: 100%;
+    border-top: 1px dashed #000;
+    display: block;
+    position: absolute;
+}
+
+tfoot tr:first-child td:first-child, tfoot tr:first-child td:last-child {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.date_time_con {
+    display: flex;
+    justify-content: center;
+    column-gap: 25px;
+}
+
+.items {
+    margin-top: 25px;
+}
+
+h3 {
+    border-top: 1px dashed #000;
+    padding-top: 10px;
+    margin-top: 25px;
+    text-align: center;
+    text-transform: uppercase;
 }
